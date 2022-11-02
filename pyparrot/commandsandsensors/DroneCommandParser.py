@@ -42,8 +42,6 @@ class DroneCommandParser:
         # run the search first in minidrone xml and then hit common if that failed
         project_id = int(my_file.project['id'])
 
-        #for child in my_file.project.myclass:
-        #changed by Anton
         for child in my_file.project.get_elements():
             if child['name'] == myclass:
                 class_id = int(child['id'])
