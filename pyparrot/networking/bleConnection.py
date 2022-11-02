@@ -49,7 +49,7 @@ class MinidroneDelegate(DefaultDelegate):
 
 
 class BLEConnection:
-    def __init__(self, address, minidrone):
+    def __init__(self, address, minidrone, iface):
         """
              Initialize with its BLE address - if you don't know the address, call findMinidrone
              and that will discover it for you.
@@ -60,6 +60,7 @@ class BLEConnection:
         self.address = address
         self.drone_connection = Peripheral()
         self.minidrone = minidrone
+        self.iface = iface
 
         # the following UUID segments come from the Minidrone and from the documenation at
         # http://forum.developer.parrot.com/t/minidrone-characteristics-uuid/4686/3
@@ -189,7 +190,7 @@ class BLEConnection:
         while (try_num < num_retries and not success):
             try:
                 color_print("trying to re-connect to the minidrone at address %s" % self.address, "WARN")
-                self.drone_connection.connect(self.address, "random")
+                self.drone_connection.connect(self.address, "random", self.iface)
                 color_print("connected!  Asking for services and characteristics", "SUCCESS")
                 success = True
             except BTLEException:
@@ -210,7 +211,7 @@ class BLEConnection:
         :return: throws an error if the drone connection failed.  Returns void if nothing failed.
         """
         color_print("trying to connect to the minidrone at address %s" % self.address, "INFO")
-        self.drone_connection.connect(self.address, "random")
+        self.drone_connection.connect(self.address, "random", self.iface)
         color_print("connected!  Asking for services and characteristics", "SUCCESS")
 
         # re-try until all services have been found
