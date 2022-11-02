@@ -307,7 +307,7 @@ class MamboGroundcam:
 
 
 class Minidrone:
-    def __init__(self, address="", use_wifi=False):
+    def __init__(self, address="", use_wifi=False, iface=0):
         """
         If you need BLE: Initialize with its BLE address - if you don't know the address, call findMambo
         and that will discover it for you.
@@ -319,13 +319,15 @@ class Minidrone:
         self.address = address
         self.use_wifi = use_wifi
         self.groundcam = None
+        self.iface = iface
+
         if (use_wifi):
             self.drone_connection = WifiConnection(self, drone_type="Mambo")
             # initialize groundcam
             self.groundcam = MamboGroundcam()
         else:
             if (BLEAvailable):
-                self.drone_connection = BLEConnection(address, self)
+                self.drone_connection = BLEConnection(address, self, self.iface)
             else:
                 self.drone_connection = None
                 color_print("ERROR: you are trying to use a BLE connection on a system that doesn't have BLE installed.", "ERROR")
