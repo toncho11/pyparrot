@@ -160,7 +160,9 @@ class DroneSensorParser:
             #color_print("looking for project id %d in %s" % (project_id, project_xml))
             if (project_id == int(project_xml.project['id'])):
                 #color_print("looking for myclass_id %d" % myclass_id)
-                for c in project_xml.project.myclass:
+                #changed by Anton
+                #for c in project_xml.project.myclass:
+                for c in project_xml.project.get_elements():
                     #color_print("looking for cmd_id %d" % cmd_id)
                     if int(c['id']) == myclass_id:
                         for cmd_child in c.cmd:
