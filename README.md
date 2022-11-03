@@ -1,8 +1,8 @@
 # What is this fork?
 
 This fork adds the following improvements:
-* support for multiple host Bluetooth devices. You can plug and use several USB (or internal) Bluetooth devices
-* fixes a problem with untangle XML parser
+* support for multiple host Bluetooth devices. You can plug and use several USB (or internal) Bluetooth devices. The idea is to use one host BT device per drone
+* fixes a compatibility problem with [untangle](https://github.com/stchris/untangle) XML parser
 
 # pyparrot
 Python interface for Parrot Drones
