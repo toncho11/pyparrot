@@ -49,7 +49,7 @@ class MinidroneDelegate(DefaultDelegate):
 
 
 class BLEConnection:
-    def __init__(self, address, minidrone, iface):
+    def __init__(self, address, minidrone, iface=0):
         """
              Initialize with its BLE address - if you don't know the address, call findMinidrone
              and that will discover it for you.
