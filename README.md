@@ -1,6 +1,6 @@
 # What is this fork?
 
-This fork adds the following functionality
+This fork adds the following improvements:
 * support for multiple host Bluetooth devices. You can plug and use several USB (or internal) Bluetooth devices
 * fixes a problem with untangle XML parser
 
